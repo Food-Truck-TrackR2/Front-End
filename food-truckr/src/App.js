@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Select from './components/SignSelect'
 import DinerSign from './components/DinerSign'
 import TruckSign from './components/TruckSign'
+import TruckForm from './components/TruckForm'
 import { Switch, Link, Route } from 'react-router-dom'
 
 function App() {

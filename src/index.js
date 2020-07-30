@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 import { reducer } from './reducers'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router } from "react-router-dom";
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reducer, applyMiddleware(thunk, logger))
 
-store.subscribe(() => {
-    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-})
+//store.subscribe(() => {
+//    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+//})
 
 ReactDOM.render(
 <Provider store={store}>
+<Router>
     <App />
+</Router>
 </Provider>
 , document.getElementById('root'));
 

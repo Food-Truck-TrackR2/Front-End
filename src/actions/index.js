@@ -4,6 +4,12 @@ import axios from 'axios'
 
 export const USER_REGISTER_START = 'USER_REGISTER_START'
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
+export const OPERATOR_REGISTER_START = 'OPERATOR_REGISTER_STAR'
+export const OPERATOR_REGISTER_SUCCESS = 'OPERATOR_REGISTER_SUCCESS'
+export const OPERATOR_REGISTER_FAIL = 'OPERATOR_REGISTER_FAIL'
+export const OPERATOR_LOGIN_START = 'OPERATOR_LOGIN_START'
+export const OPERATOR_LOGIN_SUCCESS = 'OPERATOR_LOGIN_SUCCESS'
+export const OPERATOR_LOGIN_FAIL = 'OPERATOR_LOGIN_FAIL'
 export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL'
 export const USER_LOGIN_START = 'USER_LOGIN_START'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
@@ -19,13 +25,13 @@ export const YELP_FETCH_FAIL = 'YELP_FETCH_FAIL'
 
 export const userRegister = (user) => dispath => {
 
-    const userType = user.type
+
     
     dispath({type: USER_REGISTER_START})
     console.log(user)
 
     axiosWithAuth()
-        .post('/api/op-auth/register', {
+        .post('/api/diner-auth/register', {
             username: user.username,
             password: user.password
 
@@ -34,34 +40,77 @@ export const userRegister = (user) => dispath => {
             console.log(res.data)
             dispath({type: USER_REGISTER_SUCCESS, payload: res.data})
             localStorage.setItem('token', res.data.token)
-            userType === 'diner' ? history.push('/diner/dashboard') : history.push('/operator/dashboard')
+            history.push('/diner/dashboard')
         })
         .catch(err => {
             dispath({type: USER_REGISTER_FAIL, payload: 'All fields must be filled out'})
         })
 }
 
+export const userRegister2 = (operator) => dispath => {
+
+    
+    dispath({type: OPERATOR_REGISTER_START})
+
+
+    axiosWithAuth()
+        .post('/api/op-auth/register', {
+            username: operator.username,
+            password: operator.password
+
+        })
+        .then(res => {
+            console.log(res.data)
+            dispath({type: OPERATOR_REGISTER_SUCCESS, payload: res.data})
+            localStorage.setItem('token', res.data.token)
+            history.push('/operator/dashboard')
+        })
+        .catch(err => {
+            dispath({type: OPERATOR_REGISTER_FAIL, payload: 'All fields must be filled out'})
+        })
+}
+
 export const userLogin = (user) => dispath => {
 
-    const userType = user.type
     
     dispath({type: USER_LOGIN_START})
+
+
+    axiosWithAuth()
+        .post('/api/diner-auth/login', {
+            username: user.username,
+            password: user.password
+        })
+        .then(res => {
+            console.log(res.data)
+            dispath({type: USER_LOGIN_SUCCESS, payload: res.message})
+            localStorage.setItem('token', res.data.token)
+            history.push('/diner/dashboard');
+        })
+        .catch(err => {
+            dispath({type: USER_LOGIN_FAIL, payload: 'Invalid username or password'})
+        })
+}
+export const operatorLogin = (user) => dispath => {
+
+    
+    dispath({type: OPERATOR_LOGIN_START})
     console.log(user.type)
 
     axiosWithAuth()
         .post('/api/op-auth/login', {
-            type: user.type,
             username: user.username,
             password: user.password,
         })
         .then(res => {
-            console.log(res.data)
-            dispath({type: USER_LOGIN_SUCCESS, payload: res.data})
+            console.log(res)
+            dispath({type: OPERATOR_LOGIN_SUCCESS, payload: res.data})
             localStorage.setItem('token', res.data.token)
-            userType === 'diner' ? history.push('/diner/dashboard') : history.push('/operator/dashboard')
+            history.push('/operator/dashboard')
         })
         .catch(err => {
-            dispath({type: USER_LOGIN_FAIL, payload: 'Invalid username or password'})
+            console.log(err)
+            dispath({type: OPERATOR_LOGIN_FAIL, payload: 'Invalid username or password'})
         })
 }
 

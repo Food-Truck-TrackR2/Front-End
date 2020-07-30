@@ -48,7 +48,7 @@ const SignupForm = props => {
                     <p className='error'>{props.error}</p>
                     <Form.Group inline>
                         <Form.Button size='massive' onClick={userRegister}>Submit</Form.Button>
-                        <Link className='login-link' to='/login'>Login</Link>
+                        <Link className='login-link' to='/Dinerlogin'>Login</Link>
                     </Form.Group>
             </Form>
         </FormContainer>

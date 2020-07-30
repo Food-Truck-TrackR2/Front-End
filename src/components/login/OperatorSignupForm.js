@@ -1,23 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { userRegister } from '../../actions'
+import { userRegister2 } from '../../actions'
 import { FormContainer } from '../../styled-components'
 import { Form } from 'semantic-ui-react'
 import { useInput } from '../hooks/useInput'
 
-const SignupForm = props => {
+const OperatorSignupForm = props => {
     
     const [username, setUsername, handleUsername] = useInput('')
     const [password, setPassword, handlePassword] = useInput('')
 
-    const userRegister = e => {
+    const userRegister2 = e => {
         e.preventDefault()
         console.log(            
             username,
             password,
             )
-            props.userRegister({
+            props.userRegister2({
                 username,
                 password,
             })
@@ -47,8 +47,8 @@ const SignupForm = props => {
                     
                     <p className='error'>{props.error}</p>
                     <Form.Group inline>
-                        <Form.Button size='massive' onClick={userRegister}>Submit</Form.Button>
-                        <Link className='login-link' to='/login'>Login</Link>
+                        <Form.Button size='massive' onClick={userRegister2}>Submit</Form.Button>
+                        <Link className='login-link' to='/Operatorlogin'>Login</Link>
                     </Form.Group>
             </Form>
         </FormContainer>
@@ -64,5 +64,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { userRegister }
-)(SignupForm)
+    { userRegister2 }
+)(OperatorSignupForm)

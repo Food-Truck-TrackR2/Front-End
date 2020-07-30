@@ -11,13 +11,15 @@ const TestDiner = props => {
         axios({
             method: 'get',
             url:'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search',
-            params: {
-                term: 'food truck',
-                location: 'Salt Lake City'
-            }, 
             headers: {
-                Authorization: 'Bearer qEmilugNtBUc4FfGwgw9LNIpEsBg3etrfOkN09IhKPOJAI21ktTdEPNLPhz8JO6vk49uj7az7rkPV3zp4pGiuUGfFNdkn0XCeBlxzxc5WSeP75FQy9cryEVKz6cXXnYx'
+                Authorization: 'Bearer DSoKlOAhmsgJmRbBxBkX2AnnU01s5-4IIEyNTQELXYw9SLYPbjbkZ4AZPmiVts6zeAhbgUxlTEDbGpr4tyvwAnq8y9Gib6E5HyzLUUQNuDPwR9l9R8Zkw9xhhkkiX3Yx'
+            },
+            params: {
+    
+                term: 'food truck',
+                location: 'Whittier'
             }
+  
         })
             .then(res => {
                 console.log(res)
@@ -29,7 +31,7 @@ const TestDiner = props => {
 
     useEffect(() => {
         axiosWithAuth()
-            .get('/trucks')
+            .get('/api/trucks')
             .then(res => {
                 console.log(res)
             })

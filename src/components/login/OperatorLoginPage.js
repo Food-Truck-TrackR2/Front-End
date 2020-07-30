@@ -1,18 +1,18 @@
 import React from 'react'
 import { MainPageContainer } from '../../styled-components'
-import LoginForm from './LoginForm'
-import Header from '../headers/Header'
+import OperatorLoginForm from './OperatorLoginForm'
+import Header2 from '../headers/Header2'
 
-const LoginPage = props => {
+const OperatorLoginPage = props => {
     console.log(props.error)
     return(
         <>
-            <Header />
+            <Header2 />
             <MainPageContainer>
-                <LoginForm />
+                <OperatorLoginForm />
             </MainPageContainer>
         </>
     )
 }
 
-export default LoginPage
+export default OperatorLoginPage

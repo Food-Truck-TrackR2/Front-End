@@ -1,18 +1,18 @@
 import React from 'react'
 import { MainPageContainer } from '../../styled-components'
-import SignupForm from './SignupForm'
-import Header from '../headers/Header'
+import OperatorSignupForm from './OperatorSignupForm'
+import Header2 from '../headers/Header2'
 
-const SignupPage = () => {
+const OperatorSignupPage = () => {
     return(
         <>
-            <Header />
+            <Header2 />
             <MainPageContainer>
             <h1>REGISTER</h1>
-                <SignupForm />
+                <OperatorSignupForm />
             </MainPageContainer>
         </>
     )
 }
 
-export default SignupPage
+export default OperatorSignupPage

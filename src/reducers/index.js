@@ -1,8 +1,14 @@
 import { USER_REGISTER_START, 
     USER_REGISTER_SUCCESS, 
     USER_REGISTER_FAIL, 
+    OPERATOR_REGISTER_SUCCESS,
+    OPERATOR_REGISTER_START,
+    OPERATOR_REGISTER_FAIL,
     USER_LOGIN_START, 
     USER_LOGIN_SUCCESS,
+    OPERATOR_LOGIN_START,
+    OPERATOR_LOGIN_SUCCESS,
+    OPERATOR_LOGIN_FAIL,
     OPERATOR_ADD_TRUCKS_SUCCESS,
     OPERATOR_ADD_TRUCKS_FAIL,
     USER_LOGIN_FAIL,
@@ -51,8 +57,7 @@ switch(action.type) {
             error: ''
         }
     case USER_REGISTER_SUCCESS:
-        return localStorage.getItem('type') === 'diner' ?
-        {
+        return {
             ...state,
             diner: {
                 ...action.payload,
@@ -60,8 +65,10 @@ switch(action.type) {
             },
             isLoading: false,
             error: ''
-        } :
-        {
+        } 
+    case OPERATOR_REGISTER_START:
+    case OPERATOR_LOGIN_START:
+        return {
             ...state,
             operator: {
                 ...state.operator,
@@ -70,19 +77,30 @@ switch(action.type) {
             isLoading: false,
             error: ''
         }
+
+        case OPERATOR_REGISTER_SUCCESS:
+            return {
+                ...state,
+                operator: {
+                    ...action.payload,
+                    ...state.operator
+                },
+                isLoading: false,
+                error: ''
+            } 
+
     case USER_LOGIN_SUCCESS:
-        return action.payload.type === 'diner' ?
-        {
+        return {
             ...state,
             diner: {
-                ...action.payload,
-                message: action.payload.message
+                ...state.operator,
+                ...action.payload
             },
             isLoading: false,
             error: ''
         } 
-        :
-        {
+    case OPERATOR_LOGIN_SUCCESS:
+        return{
             ...state,
             operator: {
                 ...state.operator,
@@ -91,12 +109,20 @@ switch(action.type) {
             isLoading: false,
             error: ''
         }
+
     case USER_LOGIN_FAIL:
         return {
             ...state, 
             error: action.payload,
             isLoading: false
         }
+    case OPERATOR_LOGIN_FAIL:
+        return{
+            ...state, 
+            error: action.payload,
+            isLoading: false 
+        }
+        
     case USER_REGISTER_FAIL:
         return{
             ...state,

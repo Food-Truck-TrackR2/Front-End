@@ -8,19 +8,15 @@ import { FormContainer } from '../../styled-components';
 
 const LoginForm = props => {
 
-    const [type, setType, handleType] = useInput('')
     const [username, setUsername, handleUsername] = useInput('')
     const [password, setPassword, handlePassword] = useInput('')
 
     const userLogin = e => {
         e.preventDefault()
-        localStorage.setItem('type', type.value)
         props.userLogin({
             username,
-            password,
-            type: type.value
+            password
         })
-        setType('')
         setUsername('')
         setPassword('')
     }

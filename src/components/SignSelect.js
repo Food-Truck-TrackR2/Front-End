@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../SignSelect.css'
 
 export default function Select(props) {
 	return (
-		<div>
+		<div className='Select'>
+		<img className='logo' src={'https://i.ibb.co/kqw30n8/logo.png'}/>
 			<div>
-				<Link to="/dinersign">Sign up as diner</Link>
+				<Link className="Login-Links" to="/DinerLogin">Login as a Diner!</Link>
 			</div>
-
-			<Link to="/trucksign">Sign up as a driver!</Link>
+		<div>
+			<Link className="Login-Links" to="/OperatorLogin">Login as an Operator!</Link>
+		</div>
 		</div>
 	)
 }

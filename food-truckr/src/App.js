@@ -11,6 +11,9 @@ function App() {
 	return (
 		<div className="App">
 			<Switch>
+			<Route path="/truckadd">
+					<TruckForm />
+				</Route>
 				<Route path="/trucksign">
 					<TruckSign />
 				</Route>

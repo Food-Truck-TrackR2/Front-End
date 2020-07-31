@@ -4,10 +4,8 @@ import { OperatorHead, Logo, Navigation, NavLinks } from '../../styled-component
 
 const DinerHeader = () => {
     const signOut = () => {
-        localStorage.removeItem('reduxState');
         localStorage.removeItem('token')
-        localStorage.removeItem('type')
-        history.push('/login')
+        history.push('/')
     }
 
     return(

@@ -9,6 +9,7 @@ const diner = () => {
 useEffect( ()=>{
     axios.get ()
     .then(response => {
+        console.log(response)
         const foodTruck = response.data;
         setTruck(truck);
     })

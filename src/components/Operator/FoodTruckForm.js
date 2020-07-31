@@ -6,9 +6,10 @@ import OperatorHeader from "../headers/OperatorHeader";
 
 const FoodTruckForm = props => {
   const [truck, setTruck] = useState({
-    truckname: "",
-    cuisineType: "",
-    menuitems: ""
+    truckName: "",
+    customerRatingAvg: 0,
+    currentLocation: "",
+    departTime: ""
   });
 
   const [message, setMessage] = useState({error: '', success: ''})
@@ -19,9 +20,9 @@ const FoodTruckForm = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    props.addTruck({ ...truck, id: props.operator.id });
+    // props.addTruck({ ...truck, id: props.operator.id });
     setMessage({error: props.error, success: props.success})
-    setTruck({ truckname: "", cuisineType: "" });
+    setTruck({   truckName: "", customerRatingAvg: 0, currentLocation: "", departTime: "" });
   };
 
   console.log(message)
@@ -31,23 +32,42 @@ const FoodTruckForm = props => {
       <OperatorHeader />
       <TruckFormContainer>
         <FormSpacing onSubmit={submitForm}>
-          <FormLabel htmlFor="truckname">Food Truck Name</FormLabel>
+          <FormLabel htmlFor="truckName">Food Truck Name</FormLabel>
           <InputStyle
-            id="truckname"
+            id="truckName"
             type="text"
-            name="truckname"
+            name="truckName"
             placeholder="Enter a Truck Name"
             onChange={handleChanges}
-            value={truck.truckname}
+            value={truck.truckName}
           />
 
-          <FormLabel htmlFor="cuisineType">Cuisine Type</FormLabel>
+          <FormLabel htmlFor="customerRatingAvg">Customer Rating</FormLabel>
           <TextArea
-            id="cuisineType"
-            name="cuisineType"
-            placeholder="Add cuisineType here"
+            id="customerRatingAvg"
+            type="number"
+            name="customerRatingAvg"
+            placeholder="add rating here"
             onChange={handleChanges}
-            value={truck.cuisineType}
+            value={truck.customerRatingAvg}
+          />
+          <FormLabel htmlFor="currentLocation">Current Location</FormLabel>
+          <InputStyle
+            id="currentLocation"
+            type="text"
+            name="currentLocation"
+            placeholder="Enter a Current Location"
+            onChange={handleChanges}
+            value={truck.currentLocation}
+          />
+          <FormLabel htmlFor="departTime">Depart Time</FormLabel>
+          <InputStyle
+            id="departTime"
+            type="text"
+            name="departTime"
+            placeholder="Enter a Departure Time"
+            onChange={handleChanges}
+            value={truck.departTime}
           />
 
           <TruckButton type="submit">Add Food Truck</TruckButton>

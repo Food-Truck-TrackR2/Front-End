@@ -132,13 +132,13 @@ switch(action.type) {
     case ADD_TRUCKS_SUCCESS:
         return{
             ...state,
-            error: '',
+            success: '',
             success: action.payload
         }
     case ADD_TRUCKS_FAIL: 
         return{
             ...state,
-            success: '',
+            error: '',
             error: action.payload
         }
     case OPERATOR_ADD_TRUCKS_SUCCESS:

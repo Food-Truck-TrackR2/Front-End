@@ -21,23 +21,21 @@ function App() {
   return (
 
     <>
-      <Router history={history}>
-        <Switch>
+          <Route exact path='/' component={SignSelect} />
+          <Route exact path='/DinerSign' component={DinerSign} />
+          <Route exact path='/TruckSign' component={TruckSign} />
+          <Route exact path='/register' component={SignupPage} />
+          <Route exact path='/register2' component={OperatorSignupPage} />
+          <Route exact path='/Dinerlogin' component={LoginPage} />
+          <Route exact path='/Operatorlogin' component={OperatorLoginPage} />
           <PrivateRoute exact path='/diner/dashboard' component={TestDiner} />
           <PrivateRoute exact path='/diner/trucks' component={TruckList} />
           <PrivateRoute exact path='/diner/trucks/:id' component={DinerTruckMenu} />
           <PrivateRoute exact path='/operator/dashboard' component={OperatorDashboard} />
           <PrivateRoute exact path='/operator/add-trucks' component={FoodTruckForm} />
           <PrivateRoute exact path='/operator/:id' component={FoodTruckMenu} />
-          <Route exact path='/Dinerlogin' component={LoginPage} />
-          <Route exact path='/Operatorlogin' component={OperatorLoginPage} />
-          <Route exact path='/register' component={SignupPage} />
-          <Route exact path='/register2' component={OperatorSignupPage} />
-          <Route exact path='/DinerSign' component={DinerSign} />
-          <Route exact path='/TruckSign' component={TruckSign} />
-          <Route component={SignSelect} />
-        </Switch>
-      </Router>
+
+
     </>
 
   );

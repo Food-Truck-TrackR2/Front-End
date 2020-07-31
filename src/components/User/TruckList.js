@@ -7,6 +7,7 @@ import { getYelpTrucks } from '../../actions'
 import axios from 'axios'
 
 const TruckList = props => {
+    console.log(props)
 
     useEffect(() => {
         props.getYelpTrucks('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search', props.diner.location)

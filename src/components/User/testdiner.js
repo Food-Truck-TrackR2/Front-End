@@ -17,7 +17,7 @@ const TestDiner = props => {
             params: {
     
                 term: 'food truck',
-                location: 'Whittier'
+                location: 'Downey'
             }
   
         })

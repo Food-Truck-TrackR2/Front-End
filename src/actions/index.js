@@ -117,10 +117,11 @@ export const operatorLogin = (user) => dispath => {
 export const addTruck = truck => dispatch => {
 
     axiosWithAuth()
-    .post(' /api/ops/:id/trucks', {
-        name: truck.truckname,
-        cuisineType: truck.cuisineType,
-        operator_id: truck.id,
+    .post('/api/ops/:id/trucks', {
+        truckName: truck.truckName,
+        customerRatingAvg: truck.customerRatingAvg,
+        currentLocation: truck.currentLocation,
+        departTime: truck.departTime,
       })
       .then(res => {
         console.log(res)
